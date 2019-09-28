@@ -1,0 +1,59 @@
+# create phoenix application 
+
+mix phx.new phoenixtailwind
+cd phoenixtailwind/
+mix ecto.create
+
+# test application 
+mix phx.server
+
+# create git repository
+git init 
+git add .
+git commit -m 'initial commit'
+
+# prepare to add liveview 
+git checkout -b addliveview
+
+code -r .
+
+## https://github.com/phoenixframework/phoenix_live_view/blob/master/README.md
+## add dependencies from readme.md
+
+mix deps.get
+mix phx.gen.secret 32
+
+## edit to add generated salt 
+## edit to add the LiveView flash plug
+## add imports  
+## expose a new socket for LiveView
+## Add LiveView NPM dependencies in your assets/package.json
+
+npm install --prefix assets
+
+## Enable connecting to a LiveView socket in your app.js file.
+## You can also optionally import the style for the default CSS classes in your app.css file.
+
+
+## edits from to test liveview
+## https://dennisbeatty.com/2019/03/19/how-to-create-a-counter-with-phoenix-live-view.html
+
+git add .
+git commit -m 'liveview added and tested with counter component'
+git checkout master 
+git merge addliveview 
+
+git checkout -b addtailwind
+
+## https://tailwindcss.com/course/setting-up-tailwind-and-postcss
+npm install tailwindcss postcss-cli autoprefixer
+cd assets
+
+npx tailwind init
+touch postcss.config.js
+
+
+
+
+
+git checkout master
