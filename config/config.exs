@@ -15,7 +15,8 @@ config :phoenixtailwind, PhoenixtailwindWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "jqy0ZQFKyPdWjsVQlYIc8SJwfEfS+OX0K9XpUgMeDLhhrUBUBpkET5mAL0HcShSJ",
   render_errors: [view: PhoenixtailwindWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Phoenixtailwind.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Phoenixtailwind.PubSub, adapter: Phoenix.PubSub.PG2],
+  live_view: [ signing_salt: "XeOLE5ninG+BsvCehbZI9aImxVsWXT12" ]
 
 # Configures Elixir's Logger
 config :logger, :console,

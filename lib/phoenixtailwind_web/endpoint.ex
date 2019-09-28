@@ -1,6 +1,8 @@
 defmodule PhoenixtailwindWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :phoenixtailwind
 
+  socket "/live", Phoenix.LiveView.Socket
+
   socket "/socket", PhoenixtailwindWeb.UserSocket,
     websocket: true,
     longpoll: false
