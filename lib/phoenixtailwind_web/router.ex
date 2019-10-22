@@ -17,8 +17,10 @@ defmodule PhoenixtailwindWeb.Router do
   scope "/", PhoenixtailwindWeb do
     pipe_through :browser
 
-    get "/workcation", WorkcationController, :index
     live("/counter", CounterLive)
+
+    get "/workcation", WorkcationController, :index
+    get "/", PageController, :index
   end
 
   # Other scopes may use custom stacks.
