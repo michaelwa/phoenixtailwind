@@ -28,8 +28,4 @@ defmodule PhoenixtailwindWeb.CounterLive do
   def handle_event("dec", _, socket) do
     {:noreply, update(socket, :val, &(&1 - 1))}
   end
-
-
-
 end
-

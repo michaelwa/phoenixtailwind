@@ -1,0 +1,181 @@
+defmodule PhoenixtailwindWeb.StuffTest do
+  use ExUnit.Case
+
+  # sql schema html
+  # table html.components
+  # atomic design system
+  #   atom, molecule, organism, layout, pages
+
+  # iex(72)> test = "<%= test %>"
+  # "<%= test %>"
+
+  # iex(73)> [ "<%=" | tail ] = String.split(test)
+  # ["<%=", "test", "%>"]
+
+  # iex(74)> [ head = "<%=" | tail ] = String.split(test)
+  # ["<%=", "test", "%>"]
+
+  # iex(75)> head
+  # "<%="
+
+  def example do
+    html_string = "<div>test</div>"
+
+    html_component_map = %{}
+    |> Map.put(:raw_string, html_string)
+    |> Map.put(:hash, :crypto.hash(:sha256,"<div>test</div>") |> Base.encode64 )
+    |> Map.put(:html_raw, Floki.parse(html_string))
+
+    ## substitute "test" for "<%= get_static_content("test", "en") %>"
+
+    substitute_text_content(html_component_map)
+  end
+
+  test "run exmaple" do
+    IO.puts(inspect(example()))
+  end
+
+  def substitute_text_content(html_component_map) when is_map(html_component_map) do
+    #walk the tree and substitute text values with:
+    # example "<div>test</div>"
+    #<%= get_static_content("test", "en") %>
+    IO.puts("1st")
+    html_raw = html_component_map
+    |> Map.fetch!(:html_raw)
+
+    html_component_map
+    |> Map.put(:html_transformed, substitute_text_content(html_raw))
+  end
+
+  def substitute_text_content(input) when input == [] do
+    IO.puts("4th")
+    []
+  end
+
+  def substitute_text_content([ head | tail ] = input) when is_list(input) do
+    IO.puts("3rd")
+    [ substitute_text_content(head) | substitute_text_content(tail) ]
+  end
+
+  def substitute_text_content({ tag, attrs, children } = input) when is_tuple(input) do
+    IO.puts("2nd")
+    { tag, attrs, substitute_text_content(children) }
+  end
+
+  def substitute_text_content(input) when is_binary(input) do
+    IO.puts("here??")
+    "<%= " <> input <> " %>"
+  end
+
+  # <svg viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	# 	<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+	# 		<g id="icon-shape">
+	# 			<path d="M12.2928932,3.70710678 L0,16 L0,20 L4,20 L16.2928932,7.70710678 L12.2928932,3.70710678 Z M13.7071068,2.29289322 L16,0 L20,4 L17.7071068,6.29289322 L13.7071068,2.29289322 Z" id="Combined-Shape"></path>
+	# 		</g>
+  # 	</g>
+	# </svg>
+
+  # test element
+  # iex(83)> html = "asdf asdf"
+  # "asdf asdf"
+  # iex(84)> Floki.parse(html)
+  # "asdf asdf"
+
+  # <%= get_from_static_content("asdf asdf", "en") %>
+
+  # or
+  # test element
+  # iex(83)> html = "Copy Right 2019"
+  # "Copy Right 2019"
+  # iex(84)> Floki.parse(html)
+  # "Copy Right 2019"
+
+  # <%= get_from_data_model(App, footer_copy_right) %>
+
+  ## develop a common application model
+  # %App{
+  #   logos: %{
+  #     sm: '<base64encoded>',
+  #     md: '<base64encoded>',
+  #     lg: '<base64encoded>'
+  #   },
+  #   header: %{},
+  #   main_nav: %{},
+  #   footer: %{}
+  #     footer_copy_right: "Copy Right 2019"
+  #   }
+  # }
+
+  # what does the api look like?
+  #   parse -> parse string to terms
+  #   render -> render terms to string
+  #   transform - makes substitutions or additions
+
+  # target for the application is what i understand a business analyst to be
+  # a person that works individuals or organizations to define in detail business
+  # processes the output from the application is either or both of a function
+  # prototype or detailed documentation to be turned over to a development team
+  # to build
+
+  # import html components
+  # insert pencil icon next to text items
+  # insert pencil icon next to link items
+  # insert pencil icon next to button items
+
+  # start from the bottom and
+  # build up foundation elements
+  # elements that have been imported and processed
+
+  # find text nodes
+  # text nodes are either
+  #   static text (text embedded within the html will never change)
+  #   static content to be coerced into key/value pairs for language translation
+  #   dynamic content from a data model
+  # find user interaction nodes
+  # links -> define local or foriegn navigations or actions
+  # buttons -> define business actions
+  # forms -> define business model, action, and end point requirements
+
+  # def render_from_terms(html) do
+  #   case html do
+  #     [head | []] ->
+  #       render_from_terms(head)
+
+  #     [head | tail] ->
+  #       render_from_terms(head) <> render_from_terms(tail)
+
+  #     {tag, attrs, children} ->
+  #       EEx.eval_string(@template_pared_tags,
+  #         tag: tag,
+  #         void_tag: Enum.any?(@void_elements, fn t -> t == tag end),
+  #         attrs: render_attrs_from_terms(attrs),
+  #         children: render_from_terms(children)
+  #       )
+
+  #     str ->
+  #       str
+  #   end
+  # end
+
+  # def render_attrs_from_terms(attrs) do
+  #   case attrs do
+  #     [] ->
+  #       ""
+
+  #     {key, value} ->
+  #       EEx.eval_string(@template_attrs, key: key, value: value)
+
+  #     [head | tail] ->
+  #       render_attrs_from_terms(head)
+  #       |> (&(&1 <> " ")).()
+  #       |> (&(&1 <> render_attrs_from_terms(tail))).()
+  #       |> String.trim()
+  #   end
+  # end
+
+  # "string"
+  # { "p", [], [] }
+  # { "p", [] ,[ "string"] }
+  # <div>test this<p>test para</p></div>
+  # {"div", [], ["test this", {"p", [], ["test para"]}]}
+end
