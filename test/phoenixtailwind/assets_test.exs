@@ -1,7 +1,7 @@
 defmodule Phoenixtailwind.HtmlTest do
   use ExUnit.Case
 
-  alias Phoenixtailwind.Html
+  alias Phoenixtailwind.Assets
 
   test "render simple tag as output" do
     html_string = "<p></p>"
@@ -59,9 +59,9 @@ defmodule Phoenixtailwind.HtmlTest do
   end
 
   def render_test_helper(html_string) do
-    html = Html.parse(html_string)
-    out_string = Html.render(html)
+    html = Assets.parse(html_string)
+    out_string = Assets.render(html)
     # assert html_string == out_string # won't match due to whitespace differences
-    assert html = Html.parse(out_string)
+    assert html = Assets.parse(out_string)
   end
 end

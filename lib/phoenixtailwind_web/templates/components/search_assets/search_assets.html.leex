@@ -1,0 +1,9 @@
+<div class="content-center">
+  <%= f = form_for(@changeset, "#", [phx_change: :validate, phx_submit: :search, class: "m-4"])  %>
+  <%# <form class="m-4"> %>
+    <%= text_input f, :url, class: "w-10/12 rounded-l-lg p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white", placeholder: "url (http://example.com)" %>
+    <%# <input class="w-10/12 rounded-l-lg p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white" placeholder="url (http://example.com)"/> %>
+    <button type="submit" class="px-8 rounded-r-lg bg-yellow-400  text-gray-800 font-bold p-4 uppercase border-yellow-500 border-t border-b border-r">Go</button>
+    <%= error_tag f, :url %>
+  </form>
+</div>

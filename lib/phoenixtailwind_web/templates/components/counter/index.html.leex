@@ -1,5 +1,5 @@
-<div>
-  <h1 phx-click="boom">The count is: <%= @val %></h1>
-  <button phx-click="dec">-</button>
-  <button phx-click="inc">+</button>
+<div class="content-center m-8 p-4 bg-blue-500 flex justify-center">
+  <button phx-click="dec" class="px-8 rounded-l-lg bg-yellow-400 text-gray-800 font-bold p-4 uppercase border-yellow-500 border-t border-b border-l">-</button>
+  <h1 phx-click="boom" class="text-3xl h-auto p-4 pr-8 bg-white self-center">The count is: <span class="w-16"><%= @val %><span></h1>
+  <button phx-click="inc" class="px-8 rounded-r-lg bg-yellow-400 text-gray-800 font-bold p-4 uppercase border-yellow-500 border-t border-b border-r">+</button>
 </div>

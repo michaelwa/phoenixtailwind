@@ -178,4 +178,23 @@ defmodule PhoenixtailwindWeb.StuffTest do
   # { "p", [] ,[ "string"] }
   # <div>test this<p>test para</p></div>
   # {"div", [], ["test this", {"p", [], ["test para"]}]}
+
+  # user stories 
+  # as a <role> i want to <goal> so that I can <reason> 
+
+
+
+alias HTTPoison
+alias Floki
+
+html_string = HTTPoison.get! "http://www.zondicons.com/icons.html"   
+
+containers = Floki.find(html_string.body, "span[class='svg-icon']")   
+# loop through list here
+one_node = Enum.at(containers,0)
+{ _parent_tag, _parent_attrs, children } = one_node
+{ Enum.at(children,0), Enum.at(children,1) }  
+
+# assets
+
 end

@@ -1,5 +1,6 @@
-defmodule Phoenixtailwind.Html.Term do
+defmodule Phoenixtailwind.Assets.Html do
   alias Floki
+  alias HTTPoison
 
   @template_tags "<<%= tag %><%= if String.length(attrs) > 0 do %> <%= attrs %><% end %><%= if void_tag do %> /><% else %>><% end %><%= children %><%= if !void_tag do %></<%= tag %>><% end %>"
   @template_attrs "<%= key %>=\"<%= value %>\""
@@ -46,4 +47,16 @@ defmodule Phoenixtailwind.Html.Term do
         |> String.trim()
     end
   end
+
+  def get_html_from_url(url) do
+    html = HTTPoison.get!(url)
+  end
+
+  # "http://www.zondicons.com/icons.html"
+  # containers = Floki.find(html_string.body, "span[class='svg-icon']")
+  # # loop through list here
+  # one_node = Enum.at(containers,0)
+  # { _parent_tag, _parent_attrs, children } = one_node
+  # { Enum.at(children,0), Enum.at(children,1) }
+
 end

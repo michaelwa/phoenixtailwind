@@ -18,6 +18,7 @@ defmodule PhoenixtailwindWeb.Router do
     pipe_through :browser
 
     live("/counter", CounterLive)
+    live("/assets", SearchAssetsLive)
 
     get "/workcation", WorkcationController, :index
     get "/", PageController, :index
