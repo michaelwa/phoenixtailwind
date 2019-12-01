@@ -12,11 +12,13 @@ defmodule Phoenixtailwind.Assets do
 
     timestamps()
   end
+
   @doc false
   def changeset(asset, attrs) do
     asset
     |> cast(attrs, [:url])
     |> validate_required([:url])
+
     # |> validate_format(:url, @url, message: "not a valid url")
   end
 
@@ -26,9 +28,9 @@ defmodule Phoenixtailwind.Assets do
   ## render raw
   ## transform raw into an assets
 
-  def get(url) do
-    Html.get(url)
-  end
+  # def get(url) do
+  #   Html.get(url)
+  # end
 
   def parse(html_string) do
     Html.parse(html_string)

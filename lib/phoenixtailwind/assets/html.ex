@@ -58,5 +58,4 @@ defmodule Phoenixtailwind.Assets.Html do
   # one_node = Enum.at(containers,0)
   # { _parent_tag, _parent_attrs, children } = one_node
   # { Enum.at(children,0), Enum.at(children,1) }
-
 end
