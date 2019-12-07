@@ -1,0 +1,9 @@
+<div class="container m-4 flex items-center justify-center">
+  <div>
+    <h1 class="text-4xl">Edit User</h1>
+
+    <%= render "form.html", Map.put(assigns, :action, Routes.user_path(@conn, :update, @user)) %>
+
+    <div class="mt-4"><%= link "Back", to: Routes.user_path(@conn, :index), class: "mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %></div>
+  </div>
+</div>

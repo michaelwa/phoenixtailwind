@@ -1,0 +1,42 @@
+<div class="container m-4 flex items-center justify-center">
+  <div>
+    <h1 class="text-4xl">Show User</h1>
+    
+    <ul class="mt-2 border p-4">
+
+      <li class="">
+        <div class="text-base">First name:</div>
+        <div class="text-xl font-semibold"><%= @user.first_name %></div>
+      </li>
+
+      <li class="mt-2">
+        <div class="text-base">Middle name:</div>
+        <div class="text-xl font-semibold"><%= @user.middle_name %></div>
+      </li>
+
+      <li class="mt-2">
+        <div class="text-base">Last name:</div>
+        <div class="text-xl font-semibold"><%= @user.last_name %></div>
+      </li>
+
+      <li class="mt-2">
+        <div class="text-base">Email:</div>
+        <div class="text-xl font-semibold"><%= @user.email %></div>
+      </li>
+
+      <li class="mt-2">
+        <div class="text-base">Phone number:</div>
+        <div class="text-xl font-semibold"><%= @user.phone_number %></div>
+      </li>
+
+      <li class="mt-2">
+        <div class="text-base">Password hash:</div>
+        <div class="text-xl font-semibold"><%= @user.password_hash %></div>
+      </li>
+
+    </ul>
+
+    <button class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><%= link "Edit", to: Routes.user_path(@conn, :edit, @user) %></button>
+    <button class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><%= link "Back", to: Routes.user_path(@conn, :index) %></button>
+  </div>
+ </div>

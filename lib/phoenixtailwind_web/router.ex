@@ -20,6 +20,8 @@ defmodule PhoenixtailwindWeb.Router do
     live("/counter", CounterLive)
     live("/assets", SearchAssetsLive)
 
+    resources "/users", UserController
+
     get "/workcation", WorkcationController, :index
     get "/", PageController, :index
   end

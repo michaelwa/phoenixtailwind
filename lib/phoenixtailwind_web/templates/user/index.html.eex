@@ -1,0 +1,38 @@
+<div class="container m-4">
+  <h1 class="text-4xl">Listing Users</h1>
+
+  <table class="table-auto">
+    <thead>
+      <tr class="">
+        <th class="px-4 py-2">First name</th>
+        <th class="px-4 py-2">Middle name</th>
+        <th class="px-4 py-2">Last name</th>
+        <th class="px-4 py-2">Email</th>
+        <th class="px-4 py-2">Phone number</th>
+        <th class="px-4 py-2">Password hash</th>
+
+        <th class="px-4 py-2"></th>
+      </tr>
+    </thead>
+    <tbody>
+  <%= for user <- @users do %>
+      <tr class="odd:bg-white even:bg-gray-200">
+        <td class="border px-4 py-2"><%= user.first_name %></td>
+        <td class="border px-4 py-2"><%= user.middle_name %></td>
+        <td class="border px-4 py-2"><%= user.last_name %></td>
+        <td class="border px-4 py-2"><%= user.email %></td>
+        <td class="border px-4 py-2"><%= user.phone_number %></td>
+        <td class="border px-4 py-2"><%= user.password_hash %></td>
+
+        <td class="border px-4 py-2">
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><%= link "Show", to: Routes.user_path(@conn, :show, user) %></button>
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><%= link "Edit", to: Routes.user_path(@conn, :edit, user) %></button>
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><%= link "Delete", to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] %></button>
+        </td>
+      </tr>
+  <% end %>
+    </tbody>
+  </table>
+
+  <button class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><%= link "New User", to: Routes.user_path(@conn, :new) %></button>
+</div>
