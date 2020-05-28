@@ -6,9 +6,30 @@ defmodule Phoenixtailwind.AccountsTest do
   describe "users" do
     alias Phoenixtailwind.Accounts.User
 
-    @valid_attrs %{email: "some email", first_name: "some first_name", last_name: "some last_name", middle_name: "some middle_name", password_hash: "some password_hash", phone_number: "some phone_number"}
-    @update_attrs %{email: "some updated email", first_name: "some updated first_name", last_name: "some updated last_name", middle_name: "some updated middle_name", password_hash: "some updated password_hash", phone_number: "some updated phone_number"}
-    @invalid_attrs %{email: nil, first_name: nil, last_name: nil, middle_name: nil, password_hash: nil, phone_number: nil}
+    @valid_attrs %{
+      email: "some email",
+      first_name: "some first_name",
+      last_name: "some last_name",
+      middle_name: "some middle_name",
+      password_hash: "some password_hash",
+      phone_number: "some phone_number"
+    }
+    @update_attrs %{
+      email: "some updated email",
+      first_name: "some updated first_name",
+      last_name: "some updated last_name",
+      middle_name: "some updated middle_name",
+      password_hash: "some updated password_hash",
+      phone_number: "some updated phone_number"
+    }
+    @invalid_attrs %{
+      email: nil,
+      first_name: nil,
+      last_name: nil,
+      middle_name: nil,
+      password_hash: nil,
+      phone_number: nil
+    }
 
     def user_fixture(attrs \\ %{}) do
       {:ok, user} =
