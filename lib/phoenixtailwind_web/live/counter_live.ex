@@ -1,4 +1,9 @@
 defmodule PhoenixtailwindWeb.CounterLive do
+  @moduledoc """
+  This module provides a public API for all search queries originating
+  in the web layer.
+  """
+
   use Phoenix.LiveView
 
   alias PhoenixtailwindWeb.Components.CounterView

@@ -53,7 +53,8 @@ defmodule Phoenixtailwind.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:floki, "~> 0.23.0"},
       {:httpoison, "~> 1.6"},
-      {:phoenix_live_view, "~> 0.4.1"}
+      {:phoenix_live_view, "~> 0.4.1"},
+      {:credo, "~> 1.1", only: [:dev, :test], runtime: false}
     ]
   end
 

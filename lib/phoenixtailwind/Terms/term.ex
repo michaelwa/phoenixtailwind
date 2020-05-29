@@ -1,4 +1,9 @@
 defmodule Terms.Term do
+  @moduledoc """
+  This module provides a public API for all search queries originating
+  in the web layer.
+  """
+
   @behaviour Ecto.Type
   def type, do: :binary
   def cast(bin), do: {:ok, bin |> :erlang.binary_to_term()}

@@ -1,4 +1,8 @@
 defmodule Phoenixtailwind.Assets.Html do
+  @moduledoc """
+  This module provides a public API for all search queries originating
+  in the web layer.
+  """
   alias Floki
   alias HTTPoison
 
