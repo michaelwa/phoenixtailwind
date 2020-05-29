@@ -15,6 +15,6 @@ defmodule Phoenixtailwind.Html.TermTest do
 
   test "render multiple attributes" do
     attrs = [{"class", "asdf qwerty zxcv"}, {"style", "oiuy lkjh"}]
-    assert ~S(class="asdf qwerty zxcv" style="oiuy lkjh) == Html.render_attrs_from_terms(attrs)
+    assert ~S(class="asdf qwerty zxcv" style="oiuy lkjh") == Html.render_attrs_from_terms(attrs)
   end
 end
